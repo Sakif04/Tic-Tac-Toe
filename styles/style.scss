@@ -6,13 +6,23 @@ $circlesize: $boxsize * 0.8;
 $linewidth: 10px;
 $lineheight: $boxsize;
 $buttoncolor: rgba(245, 145, 13, 0.8);
-// *,
-// *::after,
-// *::before {
-//   // box-sizing: border-box;
-// }
-#score {
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+* {
+  padding: 0;
+  margin: 0px;
+}
+header {
   text-align: center;
+}
+#game {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .board {
   // background: $gamebackground;
@@ -29,6 +39,7 @@ $buttoncolor: rgba(245, 145, 13, 0.8);
 }
 .box {
   position: relative;
+  margin: -0.5px;
   font-size: 30px;
   text-align: center;
   font-weight: bold;
@@ -42,7 +53,6 @@ $buttoncolor: rgba(245, 145, 13, 0.8);
   z-index: 0;
   width: $boxsize;
   height: $boxsize;
-  margin: 0;
 }
 .box:nth-child(3n + 1) {
   border-left: none;
@@ -79,6 +89,8 @@ $buttoncolor: rgba(245, 145, 13, 0.8);
   cursor: not-allowed;
 }
 .restart-button {
+  display: none;
+  pointer-events: none;
   background-color: $buttoncolor;
   font-size: 25px;
   position: absolute;
@@ -88,6 +100,10 @@ $buttoncolor: rgba(245, 145, 13, 0.8);
   border: 5px solid rgb(94, 54, 8);
   border-radius: 5px;
   cursor: pointer;
+}
+.restart-button.active {
+  display: block;
+  pointer-events: all;
 }
 .box.x::after {
   content: '';

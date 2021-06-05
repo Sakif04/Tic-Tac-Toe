@@ -1,5 +1,30 @@
-#score {
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0px;
+}
+
+header {
   text-align: center;
+}
+
+#game {
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .board {
@@ -27,6 +52,7 @@
 
 .box {
   position: relative;
+  margin: -0.5px;
   font-size: 30px;
   text-align: center;
   font-weight: bold;
@@ -47,7 +73,6 @@
   z-index: 0;
   width: 100px;
   height: 100px;
-  margin: 0;
 }
 
 .box:nth-child(3n + 1) {
@@ -89,6 +114,8 @@
 }
 
 .restart-button {
+  display: none;
+  pointer-events: none;
   background-color: rgba(245, 145, 13, 0.8);
   font-size: 25px;
   position: absolute;
@@ -99,6 +126,11 @@
   border: 5px solid #5e3608;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.restart-button.active {
+  display: block;
+  pointer-events: all;
 }
 
 .box.x::after {
