@@ -1,61 +1,86 @@
-
 class Box{
     constructor(boxnumber){
         this.boxnumber=boxnumber;
     }
     create() {
-        for(let i=0;i<this.boxnumber;i++){
-    const box=document.createElement('div');
-    box.id=i;
-    // const cell=document.createElement('div');
-    // cell.textContent="O";
-    box.className='box';
-    const game=document.querySelector('.board');
-    game.appendChild(box);}
+        for(let i=0;i<this.boxnumber;i++)
+        {   const box=document.createElement('div');
+            box.id=i;
+            box.className='box';
+            const game=document.querySelector('.board');
+            game.appendChild(box);
+        }
+        
     }
 }
-let indices=[];
 
+let indicesO=[];
+let indicesX=[];
+let winCombo=[[0,4,8],[2,4,6],[0,1,2],[2,5,8],[0,3,6],[1,4,7],[3,4,5],[6,7,8]];
 class Game{
     constructor(turn){
         this.turn=turn;
     }
     start(){
+        this.removeBoxes();
         let ninebox=new Box(9);
         ninebox.create();
-        const boxes=document.querySelectorAll('.box');
-        let clicked=(e)=>{
+        this.clickEffects();
+    }
+    removeBoxes(){const restartbtn=document.querySelector('.restart-button');
+        restartbtn.classList.remove('active');
+        let boxes=Array.from(document.querySelectorAll('.box'));
+        boxes.forEach(box=>box.remove())
+    }
+    clickEffects(){
+        const effects=(indices,changedTurn,changedPlayer,classType,box)=>{
+            console.log(this);
+            indices.push(parseInt(box.id));
+            box.classList.add(classType);
+            this.turn=changedTurn;
+            player=changedPlayer;
+            if(this.checkWin()) console.log('plyr won');
+            this.isDraw()? this.displayDraw():null;
+            turn.textContent= `Player Turn: ${player}`;
+            console.log(indices);
+        }
+        const clicked=(e)=>{
             let box=e.target;
             if(!box.classList.contains('circle')&&!box.classList.contains('x')){
-                if(this.turn==='O') {
-                    console.log(this);
-                    indices.push(box.id);
-                    box.classList.add('circle');
-                    this.turn='X';
-                    player="Player 2";
-                    turn.textContent= `Player Turn: ${player}`
-                    
+                if(this.turn=='O') {
+                    effects(indicesO,'X','Player 2','circle',box);
                 }
                 else{
-                    console.log(this);
-                    indices.push(box.id);
-                    box.classList.add('x');
-                    this.turn="O";
-                    player="Player 1";
-                    turn.textContent= `Player Turn: ${player}`
-                   
+                    effects(indicesX,'O','Player 1','x',box);
                 } 
-        } 
+            } 
+        }
+        const boxes=Array.from(document.querySelectorAll('.box'));
+        boxes.forEach((box)=>box.addEventListener('click',clicked));
     }
-        boxes.forEach((box)=>
-        box.addEventListener('click',clicked))
-        
-       
-
+    isDraw(){
+        const xclass='x';
+        const oclass='circle';
+        let boxes=Array.from(document.querySelectorAll('.box'));
+        if (boxes.every((box)=>box.classList.contains(xclass) ||box.classList.contains(oclass))){
+            return true;
+        }
+        else return false;
     }
-    restart(){
-        const restartbtn=document.querySelector('restart-button');
-        restartbtn.classList.toggle(active);
+    displayDraw(){
+        this.endGame();
+    }
+    checkWin(){ 
+        if (this.turn==='O'){
+           console.log(winCombo.some(combo=> combo.every(el=>indicesO.includes(el))))
+        }
+        else{
+           console.log(winCombo.some(combo=> combo.every(el=> indicesX.includes(el))))
+        }    
+    }
+    endGame(){
+        const restartbtn=document.querySelector('.restart-button');
+        restartbtn.classList.add('active');
     }
 }
 const turn=document.querySelector('#turn');

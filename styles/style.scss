@@ -37,6 +37,10 @@ header {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.board.draw {
+  background-color: grey;
+}
+
 .box {
   position: relative;
   margin: -0.5px;
