@@ -15,6 +15,7 @@ header {
 }
 
 #game {
+  position: relative;
   margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,6 +108,11 @@ header {
   cursor: not-allowed;
 }
 
+.box.inactive {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .box.circle::before {
   content: '';
   position: absolute;
@@ -146,6 +152,11 @@ header {
           transform: rotate(-45deg);
   height: 100px;
   cursor: not-allowed;
+}
+
+#msg {
+  top: 30%;
+  position: absolute;
 }
 
 .box.x::before {
