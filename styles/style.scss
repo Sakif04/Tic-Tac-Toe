@@ -1,11 +1,15 @@
-$gamebackground: rgba(179, 97, 97, 0.9);
-$border: 5px solid rgb(192, 83, 11);
+$gamebackground: rgb(33, 120, 250);
+$border: 5px solid rgb(58, 5, 58);
 $boxbackground: rgba(39, 71, 9, 0.801);
 $boxsize: 100px;
 $circlesize: $boxsize * 0.8;
 $linewidth: 10px;
+$headertextcolor: rgb(58, 5, 58);
 $lineheight: $boxsize;
-$buttoncolor: rgba(245, 145, 13, 0.8);
+$msgcolor: rgb(18, 214, 18);
+$circlendxcolor: rgb(182, 240, 241);
+$buttoncolor: rgb(33, 120, 250);
+$btnborder: 3px solid rgb(58, 5, 58);
 *,
 *::after,
 *::before {
@@ -17,8 +21,13 @@ $buttoncolor: rgba(245, 145, 13, 0.8);
 }
 header {
   text-align: center;
+  color: $headertextcolor;
+}
+body {
+  background-color: $gamebackground;
 }
 #game {
+  height: 80%;
   position: relative;
   margin-top: 50px;
   display: flex;
@@ -26,20 +35,16 @@ header {
   align-items: center;
 }
 .board {
-  // background: $gamebackground;
   display: flex;
   position: relative;
   z-index: 0;
   margin: auto;
-  width: 60%;
+  width: 100vh;
   flex-direction: row;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-.board.draw {
-  background-color: grey;
 }
 
 .box {
@@ -79,7 +84,7 @@ header {
   position: absolute;
   width: $circlesize;
   height: $circlesize;
-  background-color: white;
+  background-color: $gamebackground;
   border-radius: 50%;
   cursor: not-allowed;
 }
@@ -90,13 +95,30 @@ header {
 .box.circle::before {
   content: '';
   position: absolute;
-  background-color: blue;
+  background-color: $circlendxcolor;
   border-radius: 50%;
   width: $boxsize;
   height: $boxsize;
   cursor: not-allowed;
 }
+.result {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100vh;
+  height: 100vw;
+  pointer-events: none;
+}
+.result.appear {
+  display: block;
+}
+.restart-button:hover {
+  background-color: white;
+  color: $buttoncolor;
+}
 .restart-button {
+  padding: 5px;
+  color: white;
   display: none;
   pointer-events: none;
   background-color: $buttoncolor;
@@ -105,7 +127,7 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 5px solid rgb(94, 54, 8);
+  border: $btnborder;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -116,7 +138,7 @@ header {
 .box.x::after {
   content: '';
   position: absolute;
-  background-color: blue;
+  background-color: $circlendxcolor;
   width: $linewidth;
   transform: rotate(-45deg);
   height: $lineheight;
@@ -124,12 +146,13 @@ header {
 }
 #msg {
   top: 30%;
+  color: $msgcolor;
   position: absolute;
 }
 .box.x::before {
   content: '';
   position: absolute;
-  background-color: blue;
+  background-color: $circlendxcolor;
   width: $linewidth;
   transform: rotate(45deg);
   height: $lineheight;

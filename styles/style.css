@@ -12,9 +12,15 @@
 
 header {
   text-align: center;
+  color: #3a053a;
+}
+
+body {
+  background-color: #2178fa;
 }
 
 #game {
+  height: 80%;
   position: relative;
   margin-top: 50px;
   display: -webkit-box;
@@ -35,7 +41,7 @@ header {
   position: relative;
   z-index: 0;
   margin: auto;
-  width: 60%;
+  width: 100vh;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -49,10 +55,6 @@ header {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-}
-
-.board.draw {
-  background-color: grey;
 }
 
 .box {
@@ -74,7 +76,7 @@ header {
       -ms-flex-align: center;
           align-items: center;
   color: beige;
-  border: 5px solid #c0530b;
+  border: 5px solid #3a053a;
   z-index: 0;
   width: 100px;
   height: 100px;
@@ -103,7 +105,7 @@ header {
   position: absolute;
   width: 80px;
   height: 80px;
-  background-color: white;
+  background-color: #2178fa;
   border-radius: 50%;
   cursor: not-allowed;
 }
@@ -116,24 +118,44 @@ header {
 .box.circle::before {
   content: '';
   position: absolute;
-  background-color: blue;
+  background-color: #b6f0f1;
   border-radius: 50%;
   width: 100px;
   height: 100px;
   cursor: not-allowed;
 }
 
+.result {
+  display: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100vh;
+  height: 100vw;
+  pointer-events: none;
+}
+
+.result.appear {
+  display: block;
+}
+
+.restart-button:hover {
+  background-color: white;
+  color: #2178fa;
+}
+
 .restart-button {
+  padding: 5px;
+  color: white;
   display: none;
   pointer-events: none;
-  background-color: rgba(245, 145, 13, 0.8);
+  background-color: #2178fa;
   font-size: 25px;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 5px solid #5e3608;
+  border: 3px solid #3a053a;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -146,7 +168,7 @@ header {
 .box.x::after {
   content: '';
   position: absolute;
-  background-color: blue;
+  background-color: #b6f0f1;
   width: 10px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
@@ -156,13 +178,14 @@ header {
 
 #msg {
   top: 30%;
+  color: #12d612;
   position: absolute;
 }
 
 .box.x::before {
   content: '';
   position: absolute;
-  background-color: blue;
+  background-color: #b6f0f1;
   width: 10px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);

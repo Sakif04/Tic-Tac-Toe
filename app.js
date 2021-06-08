@@ -27,14 +27,19 @@ class Game{
     }
     
     start(){
-        this.removeBoxes();
+        this.renewAll();
         let ninebox=new Box(9);
         ninebox.create();
         this.clickEffects();
     }
-    removeBoxes(){
-        const winMsg=document.getElementById('win-msg');
-        winMsg?winMsg.remove():null;
+    renewAll(){
+        this.turn='O';
+        this.indicesO=[];
+        this.indicesX=[];
+        const result=document.querySelector('.result');
+        result.classList.remove('appear');
+        const msg=document.getElementById('msg');
+        msg?msg.remove():null;
         const restartbtn=document.querySelector('.restart-button');
         restartbtn.classList.remove('active');
         let boxes=Array.from(document.querySelectorAll('.box'));
@@ -44,14 +49,16 @@ class Game{
         const effects=(indices,changedTurn,changedPlayer,classType,box)=>{
             indices.push(parseInt(box.id));
             box.classList.add(classType);
-            setTimeout(()=>(this.checkWin(indices))?this.win(this.player):null,50);
+            let player=this.player;
+            let hasWon=this.checkWin(indices);
+            setTimeout(()=>{
+                (hasWon)?this.win(player):null;
+                this.isDraw() &&!hasWon? this.displayDraw():null;
+            },50);
             this.turn=changedTurn;
             this.player=changedPlayer;
-            this.isDraw()? this.displayDraw():null;
             console.log(this);
-            turn.textContent= `Player Turn: ${player}`;
-            
-            
+            turn.textContent= `Player Turn: ${player}`;        
         }
         const clicked=(e)=>{
             
@@ -79,17 +86,19 @@ class Game{
         else return false;
     }
     displayDraw(){
-        const drawMsg=document.createElement('h1');
-        drawMsg.id='msg';
-        drawMsg.textContent=`DRAW`;
-        const b_game=document.getElementById('game');
-        b_game.append(drawMsg);
-        this.endGame();
+        const msg=document.getElementById('msg')
+        if (!msg){
+            const drawMsg=document.createElement('h1');
+            drawMsg.id='msg';
+            drawMsg.style['color']='cyan';
+            drawMsg.textContent=`DRAW`;
+            const b_game=document.getElementById('game');
+            b_game.append(drawMsg);
+            this.endGame();
+        }
     }
     checkWin(indices){ 
            return this.winCombo.some(combo=> combo.every(el=>indices.includes(el)))
-            
-            
     }
     win(player){
         const winningMsg=document.createElement('h1');
@@ -99,15 +108,14 @@ class Game{
         b_game.append(winningMsg);
         this.endGame();
     }
-      
-
     endGame(){
+        const result=document.querySelector('.result');
+        result.classList.add('appear');
         const restartbtn=document.querySelector('.restart-button');
         restartbtn.classList.add('active');
         let boxes=Array.from(document.querySelectorAll('.box'));
         boxes.forEach(box=>box.classList.add('inactive'))
-    }
-    
+    }   
 }
 const turn=document.querySelector('#turn');
 let player='Player 1'
