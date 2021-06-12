@@ -11,12 +11,27 @@
 }
 
 header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   color: #3a053a;
 }
 
+#theme {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  background: #bb7070;
+  padding: 0.8rem 1rem;
+  color: #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #3a053a;
+}
+
 body {
-  background-color: #2178fa;
+  background-color: #ddd;
 }
 
 #game {
@@ -105,7 +120,7 @@ body {
   position: absolute;
   width: 80px;
   height: 80px;
-  background-color: #2178fa;
+  background-color: #ddd;
   border-radius: 50%;
   cursor: not-allowed;
 }
@@ -118,7 +133,7 @@ body {
 .box.circle::before {
   content: '';
   position: absolute;
-  background-color: #b6f0f1;
+  background-color: #096364;
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -168,7 +183,7 @@ body {
 .box.x::after {
   content: '';
   position: absolute;
-  background-color: #b6f0f1;
+  background-color: #096364;
   width: 10px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
@@ -185,11 +200,27 @@ body {
 .box.x::before {
   content: '';
   position: absolute;
-  background-color: #b6f0f1;
+  background-color: #096364;
   width: 10px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   height: 100px;
   cursor: not-allowed;
+}
+
+.app.dark body {
+  background-color: #3a053a;
+}
+
+.app.dark header {
+  color: #ddd;
+}
+
+.app.dark .box.circle::after {
+  background-color: #3a053a;
+}
+
+.app.dark .box {
+  border-color: #ddd;
 }
 /*# sourceMappingURL=style.css.map */

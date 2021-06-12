@@ -25,9 +25,25 @@ class Game{
         this.indicesX=[];
         this.winCombo=[[0,4,8],[2,4,6],[0,1,2],[2,5,8],[0,3,6],[1,4,7],[3,4,5],[6,7,8]];
     }
-    
+    attachTheme(){
+        const body=document.querySelector('body');
+        const app=document.querySelector('.app');
+        const theme=document.querySelector('#theme');
+        
+        const changeTheme=()=>{
+            console.log(theme.value);
+            if (app.classList.contains('dark')){
+                theme.value='Dark'
+                body.style.backgroundColor='#ddd';
+            }else{theme.value='Light';
+                body.style.backgroundColor='rgb(58, 5, 58)';
+            }app.classList.toggle('dark');
+        }
+        theme.addEventListener('click',changeTheme)
+    }
     start(){
         this.renewAll();
+        this.attachTheme();
         let ninebox=new Box(9);
         ninebox.create();
         this.clickEffects();

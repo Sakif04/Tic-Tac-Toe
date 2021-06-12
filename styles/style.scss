@@ -1,4 +1,4 @@
-$gamebackground: rgb(33, 120, 250);
+$gamebackground: #ddd;
 $border: 5px solid rgb(58, 5, 58);
 $boxbackground: rgba(39, 71, 9, 0.801);
 $boxsize: 100px;
@@ -7,7 +7,7 @@ $linewidth: 10px;
 $headertextcolor: rgb(58, 5, 58);
 $lineheight: $boxsize;
 $msgcolor: rgb(18, 214, 18);
-$circlendxcolor: rgb(182, 240, 241);
+$circlendxcolor: rgb(9, 99, 100);
 $buttoncolor: rgb(33, 120, 250);
 $btnborder: 3px solid rgb(58, 5, 58);
 *,
@@ -19,8 +19,21 @@ $btnborder: 3px solid rgb(58, 5, 58);
   padding: 0;
   margin: 0px;
 }
+
 header {
+  align-items: center;
   text-align: center;
+  color: $headertextcolor;
+}
+#theme {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  background: rgb(187, 112, 112);
+  padding: 0.8rem 1rem;
+  color: #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
   color: $headertextcolor;
 }
 body {
@@ -157,4 +170,23 @@ body {
   transform: rotate(45deg);
   height: $lineheight;
   cursor: not-allowed;
+}
+//dark themes adaptation
+$ondxcolor: #ddd;
+$txtcolor: #ddd;
+$darkbg: rgb(58, 5, 58);
+.app.dark {
+  body {
+    background-color: $darkbg;
+  }
+  header {
+    color: $txtcolor;
+  }
+  .box.circle::after {
+    background-color: $darkbg;
+  }
+
+  .box {
+    border-color: $txtcolor;
+  }
 }
