@@ -45,6 +45,7 @@ class Game{
         this.renewAll();
         this.attachTheme();
         let ninebox=new Box(9);
+        
         ninebox.create();
         this.clickEffects();
     }
