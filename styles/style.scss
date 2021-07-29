@@ -6,10 +6,10 @@ $circlesize: $boxsize * 0.8;
 $linewidth: 10px;
 $headertextcolor: rgb(58, 5, 58);
 $lineheight: $boxsize;
-$msgcolor: rgb(18, 214, 18);
-$circlendxcolor: rgb(9, 99, 100);
+$msgcolor: rgb(114, 145, 250);
+$circlendxcolor: rgb(176, 70, 218);
 $buttoncolor: rgb(33, 120, 250);
-$btnborder: 3px solid rgb(58, 5, 58);
+$btnborder: 2px solid #ddd;
 *,
 *::after,
 *::before {
@@ -29,12 +29,11 @@ header {
   position: absolute;
   top: 5%;
   right: 10%;
-  background: rgb(187, 112, 112);
+  background: $headertextcolor;
   padding: 0.8rem 1rem;
   color: #ddd;
   border-radius: 8px;
   font-size: 1rem;
-  color: $headertextcolor;
 }
 body {
   background-color: $gamebackground;
