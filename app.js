@@ -16,7 +16,7 @@ class Box{
 
 let indicesO=[];
 let indicesX=[];
-let winCombo=[[0,4,8],[2,4,6],[0,1,2],[2,5,8],[0,3,6],[1,4,7],[3,4,5],[6,7,8]];
+const winCombo=[[0,4,8],[2,4,6],[0,1,2],[2,5,8],[0,3,6],[1,4,7],[3,4,5],[6,7,8]];
 class Game{
     constructor(turn){
         this.turn=turn;
@@ -43,9 +43,7 @@ class Game{
     }
     start(){
         this.renewAll();
-        this.attachTheme();
         let ninebox=new Box(9);
-        
         ninebox.create();
         this.clickEffects();
     }
@@ -61,6 +59,7 @@ class Game{
         restartbtn.classList.remove('active');
         let boxes=Array.from(document.querySelectorAll('.box'));
         boxes.forEach(box=>box.remove())
+        this.attachTheme();
     }
     clickEffects(){
         const effects=(indices,changedTurn,changedPlayer,classType,box)=>{
