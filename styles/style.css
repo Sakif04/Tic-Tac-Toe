@@ -72,6 +72,7 @@ body {
 }
 
 .box {
+  padding:5rem;
   position: relative;
   margin: -0.5px;
   font-size: 30px;
