@@ -1,7 +1,7 @@
 $gamebackground: #ddd;
 $border: 5px solid rgb(58, 5, 58);
 $boxbackground: rgba(39, 71, 9, 0.801);
-$boxsize: 100px;
+$boxsize: 8rem;
 $circlesize: $boxsize * 0.8;
 $linewidth: 10px;
 $headertextcolor: rgb(58, 5, 58);
@@ -72,7 +72,7 @@ body {
   color: beige;
   border: $border;
   z-index: 0;
-  width: $boxsize;
+  width: 8rem;
   height: $boxsize;
 }
 .box:nth-child(3n + 1) {
