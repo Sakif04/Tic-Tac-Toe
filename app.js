@@ -26,12 +26,10 @@ class Game{
         this.winCombo=[[0,4,8],[2,4,6],[0,1,2],[2,5,8],[0,3,6],[1,4,7],[3,4,5],[6,7,8]];
     }
     attachTheme(){
-        const body=document.querySelector('body');
-        const app=document.querySelector('.app');
-        const theme=document.querySelector('#theme');
-        
-        const changeTheme=()=>{
-            console.log(theme.value);
+        const changeTheme=()=>{   
+            const body=document.querySelector('body');
+            const app=document.querySelector('.app');
+            const theme=document.querySelector('#theme');
             if (app.classList.contains('dark')){
                 theme.value='Dark'
                 body.style.backgroundColor='#ddd';
@@ -43,6 +41,7 @@ class Game{
     }
     start(){
         this.renewAll();
+        this.attachTheme();
         let ninebox=new Box(9);
         ninebox.create();
         this.clickEffects();
@@ -58,8 +57,7 @@ class Game{
         const restartbtn=document.querySelector('.restart-button');
         restartbtn.classList.remove('active');
         let boxes=Array.from(document.querySelectorAll('.box'));
-        boxes.forEach(box=>box.remove())
-        this.attachTheme();
+        boxes.forEach(box=>box.remove());
     }
     clickEffects(){
         const effects=(indices,changedTurn,changedPlayer,classType,box)=>{
@@ -73,7 +71,7 @@ class Game{
             },50);
             this.turn=changedTurn;
             this.player=changedPlayer;
-            console.log(this);
+            // console.log(this);
             turn.textContent= `Player Turn: ${player}`;        
         }
         const clicked=(e)=>{
@@ -130,7 +128,8 @@ class Game{
         const restartbtn=document.querySelector('.restart-button');
         restartbtn.classList.add('active');
         let boxes=Array.from(document.querySelectorAll('.box'));
-        boxes.forEach(box=>box.classList.add('inactive'))
+        boxes.forEach(box=>box.classList.add('inactive'));
+        this.attachTheme();    
     }   
 }
 const turn=document.querySelector('#turn');

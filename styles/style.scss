@@ -26,9 +26,6 @@ header {
   color: $headertextcolor;
 }
 #theme {
-  position: absolute;
-  top: 5%;
-  right: 10%;
   background: $headertextcolor;
   padding: 0.8rem 1rem;
   color: #ddd;
@@ -51,7 +48,8 @@ body {
   position: relative;
   z-index: 0;
   margin: auto;
-  width: 100vh;
+  height: 80vh;
+  width: 40vw;
   flex-direction: row;
   align-items: center;
   align-content: center;
@@ -62,6 +60,7 @@ body {
 .box {
   position: relative;
   margin: -0.5px;
+  height: 10rem;
   font-size: 30px;
   text-align: center;
   font-weight: bold;
@@ -157,7 +156,7 @@ body {
   cursor: not-allowed;
 }
 #msg {
-  top: 30%;
+  top: 25%;
   color: $msgcolor;
   position: absolute;
 }
@@ -187,5 +186,14 @@ $darkbg: rgb(58, 5, 58);
 
   .box {
     border-color: $txtcolor;
+  }
+}
+$mobile: 600px;
+@media (max-width: $mobile) {
+  html {
+    font-size: 12px;
+  }
+  .board {
+    width: 80vw;
   }
 }
