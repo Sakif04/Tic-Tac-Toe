@@ -2,7 +2,7 @@
 *::after,
 *::before {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
@@ -12,8 +12,8 @@
 
 header {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-align: center;
   color: #3a053a;
 }
@@ -38,11 +38,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .board {
@@ -56,20 +56,21 @@ body {
   width: 40vw;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-line-pack: center;
-      align-content: center;
+  align-content: center;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
 .box {
+  padding: 5rem;
   position: relative;
   margin: -0.5px;
   height: 10rem;
@@ -77,17 +78,17 @@ body {
   text-align: center;
   font-weight: bold;
   -webkit-box-flex: 30%;
-      -ms-flex: 30%;
-          flex: 30%;
+  -ms-flex: 30%;
+  flex: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: beige;
   border: 5px solid #3a053a;
   z-index: 0;
@@ -167,7 +168,7 @@ body {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   border: 2px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
@@ -184,7 +185,7 @@ body {
   background-color: #b046da;
   width: 10px;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   height: 100px;
   cursor: not-allowed;
 }
@@ -201,7 +202,7 @@ body {
   background-color: #b046da;
   width: 10px;
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   height: 100px;
   cursor: not-allowed;
 }
@@ -230,4 +231,3 @@ body {
     width: 80vw;
   }
 }
-/*# sourceMappingURL=style.css.map */
